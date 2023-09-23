@@ -128,6 +128,12 @@ RUN apt update && apt install --no-install-recommends --yes \
         x11vnc && \
         apt clean
 
+# Install Nodejs packages
+RUN npm install -g yarn \
+        bun \
+        typescript \
+        ts-node
+
 
 # Install Python packages
 RUN pip3 install --no-cache-dir \
@@ -136,7 +142,8 @@ RUN pip3 install --no-cache-dir \
     djhtml \
     matplotlib \
     "pydantic<2" \
-    pytz
+    pytz \
+    pipenv
 
 
 # Enforce login shell
