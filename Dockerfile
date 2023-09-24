@@ -106,16 +106,18 @@ RUN pip3 install --no-cache-dir /opt/cs50/extensions/cs50vsix-client/ && \
 
 # set virtual display
 ENV DISPLAY=":0"
-
+# set timezone
+ENV ENV_TIMEZONE=Asia/Kolkata
 
 # Install Ubuntu packages
 # Install acl for temporarily removing ACLs via opt/cs50/bin/postCreateCommand
 # https://github.community/t/bug-umask-does-not-seem-to-be-respected/129638/9
 RUN apt update && apt install --no-install-recommends --yes \
-        acl \
-        clang-format \
-        dwarfdump \
-        jq \
+        acl locales \
+        clang-format tree \
+        dwarfdump tzdata \
+        ntp ntpstat \
+        ntpdate jq \
         manpages-dev \
         mysql-client \
         openbox \
@@ -133,7 +135,6 @@ RUN npm install -g yarn \
         bun \
         typescript \
         ts-node
-
 
 # Install Python packages
 RUN pip3 install --no-cache-dir \
@@ -162,6 +163,10 @@ RUN chmod a+rx /opt/cs50/bin/* && \
 # Temporary workaround for https://github.com/cs50/cs50.dev/issues/19
 RUN echo "if [ -z \"\$_PROFILE_D\" ] ; then for i in /etc/profile.d/*.sh; do if ["$i" == "/etc/profile.d/debuginfod*"] ; then continue; fi; . \"\$i\"; done; export _PROFILE_D=1; fi"
 
-
+# Set Locale and Timezone (Asia/Kolkata)
+RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+RUN echo '$ENV_TIMEZONE' > /etc/timezone \
+    && ln -fsn /usr/share/zoneinfo/$ENV_TIMEZONE /etc/localtime \
+    && dpkg-reconfigure --frontend noninteractive tzdata
 # Set user
 USER ubuntu
