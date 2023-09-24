@@ -31,40 +31,40 @@ jobs:
         run: |
           export VCS_REF=$(git rev-parse HEAD)
           npm install -g @devcontainers/cli
-          devcontainer build --workspace-folder . --config devcontainer.json --image-name cs50/codespace:${{ github.sha }} --image-name cs50/codespace:latest
+          devcontainer build --workspace-folder . --config devcontainer.jsonc --image-name iamrony777/codespace:${{ github.sha }} --image-name iamrony777/codespace:latest
 
       - name: Push (latest) to GitHub Packages
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
-          docker tag cs50/codespace:${{ github.sha }} ghcr.io/cs50/codespace:${{ github.sha }}
-          docker tag cs50/codespace:latest ghcr.io/cs50/codespace:latest
-          docker push ghcr.io/cs50/codespace:${{ github.sha }}
-          docker push ghcr.io/cs50/codespace:latest
+          docker tag iamrony777/codespace:${{ github.sha }} ghcr.io/iamrony777/codespace:${{ github.sha }}
+          docker tag iamrony777/codespace:latest ghcr.io/iamrony777/codespace:latest
+          docker push ghcr.io/iamrony777/codespace:${{ github.sha }}
+          docker push ghcr.io/iamrony777/codespace:latest
 
       - name: Push to Docker Hub (latest)
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
-          docker push cs50/codespace:${{ github.sha }}
-          docker push cs50/codespace:latest
+          docker push iamrony777/codespace:${{ github.sha }}
+          docker push iamrony777/codespace:latest
 
       - name: Build (develop)
         if: ${{ github.ref == 'refs/heads/develop' }}
         run: |
           export VCS_REF=$(git rev-parse HEAD)
           npm install -g @devcontainers/cli
-          devcontainer build --workspace-folder . --config devcontainer.json --image-name cs50/codespace:${{ github.sha }} --image-name cs50/codespace:develop
+          devcontainer build --workspace-folder . --config devcontainer.jsonc --image-name iamrony777/codespace:${{ github.sha }} --image-name iamrony777/codespace:develop
 
       - name: Push (develop) to GitHub Packages
         if: ${{ github.ref == 'refs/heads/develop' }}
         run: |
-          docker tag cs50/codespace:${{ github.sha }} ghcr.io/cs50/codespace:develop
-          docker push ghcr.io/cs50/codespace:develop
+          docker tag iamrony777/codespace:${{ github.sha }} ghcr.io/iamrony777/codespace:develop
+          docker push ghcr.io/iamrony777/codespace:develop
 
       - name: Push to Docker Hub (develop)
         if: ${{ github.ref == 'refs/heads/develop' }}
         run: |
-          docker push cs50/codespace:${{ github.sha }}
-          docker push cs50/codespace:develop
+          docker push iamrony777/codespace:${{ github.sha }}
+          docker push iamrony777/codespace:develop
 
       - name: Tag main as latest
         if: ${{ github.ref == 'refs/heads/main' }}
