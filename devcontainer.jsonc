@@ -9,35 +9,12 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "/opt/cs50/extensions/explain50-1.0.0.vsix",
                 "/opt/cs50/extensions/cs50-0.0.1.vsix",
-                "/opt/cs50/extensions/ddb50-2.0.0.vsix",
-                "/opt/cs50/extensions/phpliteadmin-0.0.1.vsix",
-                "/opt/cs50/extensions/style50-0.0.1.vsix",
-                "cs50.extension-uninstaller",
-                "inferrinizzard.prettier-sql-vscode",
-                "mathematic.vscode-pdf",
-                "ms-ceintl.vscode-language-pack-bg",
-                "ms-ceintl.vscode-language-pack-cs",
-                "ms-ceintl.vscode-language-pack-de",
-                "ms-ceintl.vscode-language-pack-es",
-                "ms-ceintl.vscode-language-pack-fr",
-                "ms-ceintl.vscode-language-pack-hu",
-                "ms-ceintl.vscode-language-pack-it",
-                "ms-ceintl.vscode-language-pack-ja",
-                "ms-ceintl.vscode-language-pack-ko",
-                "ms-ceintl.vscode-language-pack-pl",
-                "ms-ceintl.vscode-language-pack-pt-br",
-                "ms-ceintl.vscode-language-pack-ru",
-                "ms-ceintl.vscode-language-pack-zh-hans",
-                "ms-ceintl.vscode-language-pack-zh-hant",
                 "ms-python.python",
-                "ms-vscode.cpptools",
-                "ms-vscode.hexeditor",
                 "ms-vsliveshare.vsliveshare",
-                "redhat.java",
-                "vscjava.vscode-java-debug",
-                "vsls-contrib.gitdoc"
+                "vsls-contrib.gitdoc",
+                "PKief.material-icon-theme", /* Material icon theme */
+                "fwcd.kotlin" /* Kotlin language support */
             ],
             "settings": {
                 "breadcrumbs.enabled": false,
@@ -53,25 +30,25 @@
                 "diffEditor.diffAlgorithm": "advanced",
                 "diffEditor.ignoreTrimWhitespace": false,
                 "editor.autoClosingQuotes": "never",
-                "editor.colorDecorators": false,
+                "editor.colorDecorators": true,
                 "editor.emptySelectionClipboard": false,
-                "editor.folding": false,
-                "editor.foldingHighlight": false,
-                "editor.formatOnSave": false,
-                "editor.guides.indentation": false,
-                "editor.hover.enabled": false,
+                "editor.folding": true,
+                "editor.foldingHighlight": true,
+                "editor.formatOnSave": true,
+                "editor.guides.indentation": true,
+                "editor.hover.enabled": true,
                 "editor.lightbulb.enabled": false,
                 "editor.matchBrackets": "never",
                 "editor.minimap.enabled": false,
-                "editor.occurrencesHighlight": false,
-                "editor.parameterHints.enabled": false,
+                "editor.occurrencesHighlight": true,
+                "editor.parameterHints.enabled": true,
                 "editor.quickSuggestions": {
-                    "other": "off",
+                    "other": "on",
                     "comments": "off",
                     "strings": "off"
                 },
                 "editor.renderWhitespace": "selection",
-                "editor.selectionHighlight": false,
+                "editor.selectionHighlight": true,
                 "editor.semanticTokenColorCustomizations": {
                     "[GitHub Dark Default]": {
                         "rules": {
@@ -84,12 +61,10 @@
                         }
                     }
                 },
-                "editor.suggestOnTriggerCharacters": false,
+                "editor.suggestOnTriggerCharacters": true,
                 "extensions.ignoreRecommendations": true,
                 "explorer.compactFolders": false,
                 "extension-uninstaller.uninstall": [
-                    "Codeium.codeium",
-                    "Codeium.codeium-enterprise-updater",
                     "github.copilot",
                     "github.copilot-nightly",
                     "ms-toolsai.vscode-jupyter-cell-tags",
@@ -97,7 +72,8 @@
                 ],
                 "files.autoSave": "afterDelay",
                 "files.exclude": {
-                    "**/.*": true
+                    "**/.*": false,
+                    "**/.venv": true,
                 },
                 "files.trimTrailingWhitespace": true,
                 "files.watcherExclude": {
@@ -107,7 +83,7 @@
                 },
                 "git.autofetch": true, /* Disable "Would you like Code to periodically run 'git fetch'?" toast */
                 "github.codespaces.devcontainerChangedNotificationStyle": "none",
-                "git.decorations.enabled": false,
+                "git.decorations.enabled": true,
                 "git.terminalAuthentication": true,
                 "github.gitAuthentication": true,
                 "gitdoc.autoPull": "off",
@@ -116,7 +92,7 @@
                 "gitdoc.commitValidationLevel": "none",
                 "gitdoc.pullOnOpen": false,
                 "html.format.indentInnerHtml": true,
-                "html.suggest.html5": false,
+                "html.suggest.html5": true,
                 "java.server.launchMode": "Standard",
                 "java.configuration.runtimes": [
                     {
@@ -127,9 +103,9 @@
                 ],
                 "java.inlayHints.parameterNames.enabled": "none",
                 "java.debug.settings.enableRunDebugCodeLens": false,
-                "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-                "javascript.suggest.enabled": false,
-                "javascript.validate.enable": false, /* Disable red squiggles */
+                "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+                "javascript.suggest.enabled": true,
+                "javascript.validate.enable": true, /* Disable red squiggles */
                 "Prettier-SQL.keywordCase": "upper",
                 "problems.decorations.enabled": false,
                 "python.formatting.provider": "black",
@@ -198,11 +174,11 @@
                 "workbench.editor.closeOnFileDelete": true,
                 "workbench.editor.enablePreview": false,
                 "workbench.editor.untitled.hint": "hidden",
-                "workbench.iconTheme": "vs-minimal", /* Simplify icons */
+                "workbench.iconTheme": "material-icon-theme", /* Material Icons */
                 "workbench.preferredDarkColorTheme": "GitHub Dark Default",
                 "workbench.preferredLightColorTheme": "GitHub Light Default",
                 "workbench.startupEditor": "none",
-                "workbench.statusBar.visible": false,
+                "workbench.statusBar.visible": true,
                 "workbench.tips.enabled": false,
                 "workbench.welcomePage.walkthroughs.openOnInstall": false
             }
