@@ -112,7 +112,7 @@ ENV ENV_TIMEZONE=Asia/Kolkata
 # Install Ubuntu packages
 # Install acl for temporarily removing ACLs via opt/cs50/bin/postCreateCommand
 # https://github.community/t/bug-umask-does-not-seem-to-be-respected/129638/9
-RUN apt update && apt install --no-install-recommends --yes \
+RUN apt update && apt upgrade -y && apt install --no-install-recommends --yes \
         acl locales \
         clang-format tree \
         dwarfdump tzdata \
@@ -144,7 +144,8 @@ RUN pip3 install --no-cache-dir \
     matplotlib \
     "pydantic<2" \
     pytz \
-    pipenv
+    pipenv \
+    poetry
 
 
 # Enforce login shell
