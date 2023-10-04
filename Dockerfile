@@ -130,6 +130,17 @@ RUN apt update && apt upgrade -y && apt install --no-install-recommends --yes \
         x11vnc && \
         apt clean
 
+# Flutter deps
+RUN apt install clang cmake \
+        ninja-build pkg-config \
+        libgtk-3-dev liblzma-dev \
+        libstdc++-12-dev --yes
+
+# Download Google Chrome
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install && \
+    rm google-chrome-stable_current_amd64.deb
+
 # Install Nodejs packages
 RUN npm install -g yarn \
         bun \
