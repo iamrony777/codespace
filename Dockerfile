@@ -113,28 +113,34 @@ ENV ENV_TIMEZONE=Asia/Kolkata
 # Install acl for temporarily removing ACLs via opt/cs50/bin/postCreateCommand
 # https://github.community/t/bug-umask-does-not-seem-to-be-respected/129638/9
 RUN apt update && apt upgrade -y && apt install --no-install-recommends --yes \
-        acl locales \
-        clang-format tree \
-        dwarfdump tzdata \
-        ntp ntpstat \
-        ntpdate jq \
-        manpages-dev \
-        mysql-client \
-        openbox \
-        pgloader \
-        php-cli \
-        php-mbstring \
-        php-sqlite3 \
-        postgresql \
-        xvfb \
-        x11vnc && \
-        apt clean
+    acl locales \
+    clang-format tree \
+    dwarfdump tzdata \
+    ntp ntpstat \
+    ntpdate jq \
+    manpages-dev \
+    mysql-client \
+    openbox \
+    pgloader \
+    php-cli \
+    php-mbstring \
+    php-sqlite3 \
+    postgresql \
+    xvfb \
+    x11vnc && \
+    apt clean
 
 # Flutter deps
 RUN apt install clang cmake \
-        ninja-build pkg-config \
-        libgtk-3-dev liblzma-dev \
-        libstdc++-12-dev --yes
+    ninja-build pkg-config \
+    libgtk-3-dev liblzma-dev \
+    libstdc++-12-dev --yes
+
+# Dart Deps and SDK
+RUN  wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg && \
+    echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
+
+RUN apt update && apt install dart --yes
 
 # Download Google Chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
@@ -143,9 +149,9 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 
 # Install Nodejs packages
 RUN npm install -g yarn \
-        bun \
-        typescript \
-        ts-node
+    bun \
+    typescript \
+    ts-node
 
 # Install Python packages
 RUN pip3 install --no-cache-dir \
